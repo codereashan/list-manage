@@ -94,6 +94,8 @@ const Listing = () => {
     }
   }, [searchTerm]);
 
+  console.log("data:", data)
+
   return (
     <div className="flex min-h-screen w-full flex-col bg-muted/40">
       <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-white sm:flex">
@@ -271,7 +273,7 @@ const Listing = () => {
 
         <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
           <Tabs defaultValue="all">
-            <div className="flex items-center">
+            <div className="flex items-center justify-between">
               <TabsList>
                 <TabsTrigger value="all">All</TabsTrigger>
                 <TabsTrigger value="active">
@@ -284,7 +286,7 @@ const Listing = () => {
                   Archived
                 </TabsTrigger>
               </TabsList>
-              <div className="ml-auto flex items-center gap-2"  style={{width: "80%"}}>
+              <div className="ml-auto flex items-center gap-2" >
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button variant="outline" size="sm" className="h-8 gap-1">
@@ -306,7 +308,7 @@ const Listing = () => {
                     </DropdownMenuCheckboxItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
-                
+
                 <Button size="sm" variant="outline" className="h-8 gap-1">
                   <File className="h-3.5 w-3.5" />
                   <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
@@ -325,7 +327,10 @@ const Listing = () => {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <TableMain data={data} setData={setData} />
+                  {data?.length > 0 ?
+                    <TableMain data={data} setData={setData} /> :
+                    <h2 className='text-center font-bold my-6'>No Data Found</h2>
+                  }
                 </CardContent>
                 <CardFooter>
                   <div className="text-xs text-muted-foreground">

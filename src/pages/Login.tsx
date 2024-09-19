@@ -24,47 +24,49 @@ const Login = () => {
     navigate('/listing')
   }
   return (
-    <Card className="w-full max-w-sm">
-      <CardHeader>
-        <CardTitle className="text-3xl mb-6">Login</CardTitle>
-        <CardDescription>
-          Enter your email below to login to your account.
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="grid gap-4">
-        <div className="grid gap-2">
-          {/* <Label htmlFor="email">Email</Label> */}
-          <Input
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            type="email"
-            placeholder="Email"
-            required
-          />
-        </div>
-        <div className="grid gap-2">
-          {/* <Label htmlFor="password">Password</Label> */}
-          <Input
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            type="password"
-            placeholder="Password"
-            required
-          />
-        </div>
-      </CardContent>
-      <CardFooter>
-        <Button
-          className="w-full"
-          onClick={handleSignIn}
-          disabled={email && password ? false : true}
-        >
-          Sign In
-        </Button>
-      </CardFooter>
-    </Card>
+    <div className="flex w-full justify-center">
+      <Card className="w-full max-w-sm">
+        <CardHeader className="text-center">
+          <CardTitle className="text-3xl mb-6">Login</CardTitle>
+          <CardDescription>
+            Enter your email below to login to your account.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="grid gap-4">
+          <div className="grid gap-2">
+            {/* <Label htmlFor="email">Email</Label> */}
+            <Input
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              type="email"
+              placeholder="Email"
+              required
+            />
+          </div>
+          <div className="grid gap-2">
+            {/* <Label htmlFor="password">Password</Label> */}
+            <Input
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+              placeholder="Password"
+              required
+            />
+          </div>
+        </CardContent>
+        <CardFooter>
+          <Button
+            className="w-full"
+            onClick={handleSignIn}
+            disabled={email && password ? false : true}
+          >
+            Sign In
+          </Button>
+        </CardFooter>
+      </Card>
+    </div>
   )
 }
 

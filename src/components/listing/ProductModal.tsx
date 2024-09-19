@@ -16,7 +16,7 @@ import { PlusCircle } from "lucide-react"
 import { useState } from "react"
 
 export function ProductModal(props: any) {
-  const { data, setData, type, id = null } = props;
+  const { data, setData, type } = props;
   const [name, setName] = useState<any>(null)
   const [price, setPrice] = useState<any>(null)
 
@@ -36,24 +36,24 @@ export function ProductModal(props: any) {
   }
 
   // handle editing a product
-  const editProduct = (id: number) => {
-    if (!id) {
-      return;
-    }
-    let product = data.find((prod: any) => prod.id === id)
-    product.name = name;
-    product.price = price
-  }
+  // const editProduct = (id: number) => {
+  //   if (!id) {
+  //     return;
+  //   }
+  //   let product = data.find((prod: any) => prod.id === id)
+  //   product.name = name;
+  //   product.price = price
+  // }
 
   return (
     <Dialog>
       <DialogTrigger asChild>
-        {type === "add" ? <Button size="sm" className="h-8 gap-1">
+        {type === "add" && <Button size="sm" className="h-8 gap-1">
           <PlusCircle className="h-3.5 w-3.5" />
           <span className="sr-only sm:not-sr-only sm:whitespace-nowrap" >
             Add Product
           </span>
-        </Button> : <DropdownMenuItem>Edit</DropdownMenuItem>}
+        </Button>}
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
@@ -90,7 +90,7 @@ export function ProductModal(props: any) {
         </div>
         <DialogFooter>
           <DialogClose asChild>
-            <Button type="submit" onClick={() => type === "add" ? addNewProduct() : editProduct(id)}>Save changes</Button>
+            <Button type="submit" onClick={() => addNewProduct()}>Save changes</Button>
           </DialogClose>
         </DialogFooter>
       </DialogContent>
